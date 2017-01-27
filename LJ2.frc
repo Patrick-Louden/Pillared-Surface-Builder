@@ -1,0 +1,53 @@
+// This is the forcefield file for stock Lennard-Jones simulations
+//
+// The sections are divided into AtomTypes
+//
+// many parameters (but not all) are derived from the TRAPPE force field
+// of Siepmann's group.
+
+begin Options
+      Name                   "LJ"
+end Options
+
+begin BaseAtomTypes    
+//Name		mass(amu)
+He		4.002602
+Ne		20.1797		
+Ar		39.948		
+Kr		83.80
+PL		12.01
+end BaseAtomTypes
+
+begin LennardJonesAtomTypes
+//Name		epsilon(kcal/mol)	sigma(Angstroms)
+He	  	0.020269601874	2.28
+Ne	  	0.09339914589	2.72
+Ar	  	0.238068461226	3.41
+Kr	  	0.32590340268	3.83
+//PL		0.5556883	3.4
+end LennardJonesAtomTypes
+
+begin BondTypes
+//Atom1	Atom2	Harmonic	b0		kb(kcal/mol)
+PL    PL	Harmonic	3.808		0.00000
+end BondTypes
+
+begin BendTypes
+//Atom1	Atom2	Atom3	Harmonic	Theta	Ktheta
+PL	PL	PL	Harmonic	180.0	0
+end BendTypes
+
+begin TorsionTypes
+//Atom1	Atom2	Atom3	Atom4	Charmm	Kchi	n	delta	[Kchi	n	delta]
+PL	PL	PL	PL	Charmm	0	3	0
+end TorsionTypes
+
+begin NonBondedInteractions
+
+//LennardJones          sigma   epsilon
+//PL PL	 LennardJones	 3.4	8.465
+
+//Shifted Morse		 	r0	D0	beta0
+PL	  PL	ShiftedMorse	3.808	8.0	1.39
+
+end NonBondedInteractions
